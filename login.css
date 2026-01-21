@@ -1,0 +1,169 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+body {
+    font-family: Segoe UI;
+    background: linear-gradient(135deg, #a8c0e0, #b8d4c8);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.container {
+    background: white;
+    width: 900px;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .2)
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px
+}
+
+.auth-buttons button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600
+}
+
+.active-signup {
+    background: #8fabdb;
+    color: white
+}
+
+.active-login {
+    background: #a8c9a0;
+    color: white
+}
+
+.inactive-login,
+.inactive-signup {
+    background: #e0e0e0;
+    color: #666
+}
+
+.tabs-header {
+    background: linear-gradient(135deg, #b8d4e8, #c8e6d8);
+    padding: 15px;
+    border-radius: 25px 25px 0 0;
+    text-align: center
+}
+
+.forms-container {
+    background: #fafafa;
+    padding: 30px;
+    border-radius: 0 0 25px 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px
+}
+
+.form-section {
+    background: white;
+    padding: 30px;
+    width: 320px;
+    border-radius: 18px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .08)
+}
+
+.form-section h2 {
+    text-align: center;
+    margin-bottom: 15px
+}
+
+.form-section input,
+.form-section select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 12px;
+    border: 2px solid #ddd;
+    outline: none
+}
+
+.form-section input:focus,
+.form-section select:focus {
+    border-color: #8fabdb
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600
+}
+
+.submit-btn.signup {
+    background: #8fabdb;
+    color: white
+}
+
+.submit-btn.login {
+    background: #a8c9a0;
+    color: white
+}
+
+.hidden {
+    display: none !important
+}
+
+/* POPUP */
+.popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999
+}
+
+.popup.hidden {
+    display: none !important
+}
+
+.popup-box {
+    background: white;
+    padding: 30px;
+    width: 320px;
+    border-radius: 25px;
+    text-align: center
+}
+
+.popup-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 12px;
+    border: 2px solid #ddd
+}
+
+.popup-box button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 12px;
+    margin: 5px;
+    background: #8fabdb;
+    color: white;
+    cursor: pointer;
+    font-weight: 600
+}
+
+.popup-box button.secondary {
+    background: #ddd;
+    color: #333
+}

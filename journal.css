@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Segoe UI;
+}
+
+body {
+    background: linear-gradient(135deg, #c9d6e8, #b8d4c8);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* MAIN CARD */
+.container {
+    width: 95%;
+    max-width: 1200px;
+    background: white;
+    padding: 35px;
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .15);
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+header h1 {
+    font-size: 32px;
+}
+
+header button {
+    background: #a8c9a0;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+}
+
+/* MAIN LAYOUT */
+.main-content {
+    display: flex;
+    gap: 30px;
+}
+
+/* LEFT DIARY */
+.diary-section {
+    flex: 1;
+}
+
+/* DATE BAR */
+.date-bar {
+    margin-bottom: 15px;
+}
+
+.date-bar input {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+#showDate {
+    font-size: 29px;
+    font-weight: 600;
+    margin-top: 6px;
+}
+
+#showDay {
+    color: #666;
+}
+
+/* TITLE */
+.title {
+    width: 100%;
+    padding: 14px;
+    border-radius: 14px;
+    border: 2px solid #eee;
+    margin: 15px 0;
+}
+
+/* MOODS */
+.moods span {
+    font-size: 22px;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+/* TEXT AREA */
+#content {
+    width: 100%;
+    height: 160px;
+    padding: 15px;
+    border-radius: 16px;
+    border: 2px solid #eee;
+    resize: none;
+    margin: 12px 0;
+}
+
+/* BUTTONS */
+.btns {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.save {
+    background: #a8c9a0;
+    color: white;
+    border: none;
+    padding: 12px 40px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.discard {
+    background: #e8e8e8;
+    border: none;
+    padding: 12px 40px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.side-item {
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+}
+
+.side-item:hover {
+    background: #eaeaea;
+}
+
+.side-item.emergency {
+    background: #ff7b7b;
+    color: white;
+}
+
+/* CARDS */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.card {
+    background: #f8f8f8;
+    padding: 18px;
+    border-radius: 18px;
+}

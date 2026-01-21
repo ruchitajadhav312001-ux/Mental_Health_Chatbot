@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Resources - MindBloom</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #c9d6e8 0%, #b8c8d8 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: #ffffff;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            max-width: 1100px;
+            width: 100%;
+            padding: 40px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+
+        .title-section h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .title-section p {
+            font-size: 16px;
+            color: #888;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .login-btn {
+            background: #a8c9a0;
+            color: white;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(168, 201, 160, 0.4);
+        }
+
+        .profile-btn {
+            width: 48px;
+            height: 48px;
+            background: #a8c9d8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .profile-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .main-content {
+            display: flex;
+            gap: 30px;
+        }
+
+        .resources-section {
+            flex: 1;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .resource-card {
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .resource-card.anxiety {
+            background: linear-gradient(135deg, #d4e8d4 0%, #c8e6d8 100%);
+            border: 2px solid #b8d8c8;
+        }
+
+        .resource-card.sleep {
+            background: linear-gradient(135deg, #d4e4f0 0%, #c8d8e8 100%);
+            border: 2px solid #b8c8d8;
+        }
+
+        .resource-card.affirmations {
+            background: linear-gradient(135deg, #f8e8d4 0%, #f0dcc8 100%);
+            border: 2px solid #e8d0b8;
+        }
+
+        .resource-card.crisis {
+            background: linear-gradient(135deg, #f8d4d4 0%, #f0c8c8 100%);
+            border: 2px solid #e8b8b8;
+        }
+
+        .resource-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .resource-card h3 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .resource-card p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .resource-btn {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .resource-btn.explore {
+            background: #8fabdb;
+            color: white;
+        }
+
+        .resource-btn.listen {
+            background: #8fabdb;
+            color: white;
+        }
+
+        .resource-btn.read {
+            background: #d4a574;
+            color: white;
+        }
+
+        .resource-btn.help {
+            background: #ef7878;
+            color: white;
+        }
+
+        .resource-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .sidebar {
+            width: 220px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .sidebar-item {
+            background: #f5f5f5;
+            padding: 15px 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .sidebar-item:hover {
+            background: #e8e8e8;
+            transform: translateX(-5px);
+        }
+
+        .sidebar-item.active {
+            background: #fff;
+            border: 2px solid #ff7b7b;
+            color: #333;
+        }
+
+        .sidebar-item.emergency {
+            background: #ff7b7b;
+            color: white;
+            margin-top: auto;
+        }
+
+        .sidebar-item.emergency:hover {
+            background: #ff6565;
+        }
+
+        .icon {
+            width: 18px;
+            height: 18px;
+        }
+
+        .input-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: #f8f8f8;
+            padding: 15px 20px;
+            border-radius: 25px;
+            margin-top: 20px;
+        }
+
+        .mic-icon {
+            width: 24px;
+            height: 24px;
+            color: #999;
+            cursor: pointer;
+        }
+
+        .input-field {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 15px;
+            color: #555;
+            background: transparent;
+        }
+
+        .input-field::placeholder {
+            color: #bbb;
+        }
+
+        .send-icon {
+            width: 24px;
+            height: 24px;
+            color: #8fabdb;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .send-icon:hover {
+            transform: translateX(3px);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h2 {
+            font-size: 28px;
+            color: #333;
+        }
+
+        .close-btn {
+            font-size: 32px;
+            color: #999;
+            cursor: pointer;
+            border: none;
+            background: none;
+            line-height: 1;
+        }
+
+        .close-btn:hover {
+            color: #333;
+        }
+
+        .tip-item {
+            background: #f8f8f8;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid #8fabdb;
+        }
+
+        .tip-item h4 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .tip-item p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 968px) {
+            .main-content {
+                flex-direction: column-reverse;
+            }
+
+            .sidebar {
+                width: 100%;
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .sidebar-item {
+                flex: 1;
+                min-width: 140px;
+            }
+
+            .sidebar-item.emergency {
+                margin-top: 0;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 25px;
+            }
+
+            .title-section h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="title-section">
+                <h1>Support Resources</h1>
+                <p>Curated tools and guides to help you find peace</p>
+            </div>
+            <div class="header-buttons">
+                <button class="login-btn">LOG IN</button>
+                <button class="profile-btn">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="resources-section">
+                <div class="resources-grid">
+                    <div class="resource-card anxiety" onclick="openModal('anxiety')">
+                        <div class="resource-icon">🍃</div>
+                        <h3>Anxiety Relief</h3>
+                        <p>5-minute breathing techniques and grounding exercises.</p>
+                        <button class="resource-btn explore">Explore</button>
+                    </div>
+
+                    <div class="resource-card sleep" onclick="openModal('sleep')">
+                        <div class="resource-icon">🌙</div>
+                        <h3>Sleep Better</h3>
+                        <p>Soothing soundscapes and sleep hygiene tips.</p>
+                        <button class="resource-btn listen">Listen Now</button>
+                    </div>
+
+                    <div class="resource-card affirmations" onclick="openModal('affirmations')">
+                        <div class="resource-icon">☀️</div>
+                        <h3>Morning Affirmations</h3>
+                        <p>Start your day with positive intentions.</p>
+                        <button class="resource-btn read">Read More</button>
+                    </div>
+
+                    <div class="resource-card crisis" onclick="openModal('crisis')">
+                        <div class="resource-icon">🆘</div>
+                        <h3>Crisis Support</h3>
+                        <p>Immediate contact numbers for 24/7 help lines.</p>
+                        <button class="resource-btn help">Get Help</button>
+                    </div>
+                </div>
+
+                <div class="input-area">
+                    <svg class="mic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                        <line x1="12" y1="19" x2="12" y2="23"></line>
+                        <line x1="8" y1="23" x2="16" y2="23"></line>
+                    </svg>
+                    <input type="text" class="input-field" placeholder="Type your message...">
+                    <svg class="send-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="sidebar-item">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    <span>CHAT</span>
+                </div>
+                <div class="sidebar-item active">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                    </svg>
+                    <span>RESOURCES</span>
+                </div>
+                <div class="sidebar-item">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 20h9"></path>
+                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+                    </svg>
+                    <span>JOURNAL</span>
+                </div>
+                <div class="sidebar-item">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path
+                            d="M12 1v6m0 6v6m5.2-13.2l-4.2 4.2m0 6l-4.2 4.2M23 12h-6m-6 0H1m18.2 5.2l-4.2-4.2m-6 0l-4.2 4.2">
+                        </path>
+                    </svg>
+                    <span>SETTINGS</span>
+                </div>
+                <div class="sidebar-item emergency" onclick="openModal('crisis')">
+                    <svg class="icon" viewBox="0 0 24 24" fill="white" stroke="white" stroke-width="2">
+                        <path
+                            d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z">
+                        </path>
+                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                    <span>EMERGENCY</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="anxietyModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🍃 Anxiety Relief Tips</h2>
+                <button class="close-btn" onclick="closeModal('anxietyModal')">&times;</button>
+            </div>
+            <div class="tip-item">
+                <h4>4-7-8 Breathing Technique</h4>
+                <p>Breathe in for 4 seconds, hold for 7 seconds, exhale for 8 seconds. Repeat 4 times to calm your
+                    nervous system.</p>
+            </div>
+            <div class="tip-item">
+                <h4>5-4-3-2-1 Grounding Exercise</h4>
+                <p>Name 5 things you see, 4 things you can touch, 3 things you hear, 2 things you smell, and 1 thing you
+                    taste.</p>
+            </div>
+            <div class="tip-item">
+                <h4>Progressive Muscle Relaxation</h4>
+                <p>Tense and relax each muscle group starting from your toes to your head. Hold tension for 5 seconds,
+                    then release.</p>
+            </div>
+            <div class="tip-item">
+                <h4>Box Breathing</h4>
+                <p>Inhale for 4 counts, hold for 4, exhale for 4, hold for 4. Visualize tracing a box as you breathe.
+                </p>
+            </div>
+            <div class="tip-item">
+                <h4>Mindful Walking</h4>
+                <p>Take a 5-minute walk focusing on each step, the sensation of your feet touching the ground, and your
+                    surroundings.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="sleepModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🌙 Sleep Better Tips</h2>
+                <button class="close-btn" onclick="closeModal('sleepModal')">&times;</button>
+            </div>
+            <div class="tip-item">
+                <h4>Consistent Sleep Schedule</h4>
+                <p>Go to bed and wake up at the same time every day, even on weekends. This regulates your body's
+                    internal clock.</p>
+            </div>
+            <div class="tip-item">
+                <h4>Create a Bedtime Routine</h4>
+                <p>Develop relaxing pre-sleep rituals like reading, gentle stretching, or listening to calming music 30
+                    minutes before bed.</p>
+            </div>
+            <div class="tip-item">
+                <h4>Optimize Your Sleep Environment</h4>
+                <p>Keep your bedroom cool (60-67°F), dark, and quiet. Use blackout curtains and white noise if needed.
+                </p>
+            </div>
+            <div class="tip-item">
+                <h4>Limit Screen Time</h4>
+                <p>Avoid screens 1-2 hours before bed. Blue light suppresses melatonin production and disrupts sleep
+                    patterns.</p>
+            </div>
+            <div class="tip-item">
+                <h4>Body Scan Meditation</h4>
+                <p>Lie down and mentally scan your body from toes to head, releasing tension in each area as you go.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="affirmationsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>☀️ Morning Affirmations</h2>
+                <button class="close-btn" onclick="closeModal('affirmationsModal')">&times;</button>
+            </div>
+            <div class="tip-item">
+                <h4>"I am capable and strong"</h4>
+                <p>Remind yourself of your inner strength and ability to handle whatever the day brings.</p>
+            </div>
+            <div class="tip-item">
+                <h4>"Today is full of possibilities"</h4>
+                <p>Open your mind to the opportunities and positive experiences that await you.</p>
+            </div>
+            <div class="tip-item">
+                <h4>"I choose peace and calmness"</h4>
+                <p>Set an intention to respond to challenges with grace and composure.</p>
+            </div>
+            <div class="tip-item">
+                <h4>"I am worthy of good things"</h4>
+                <p>Acknowledge your inherent value and deserve happiness and success.</p>
+            </div>
+            <div class="tip-item">
+                <h4>"I release what I cannot control"</h4>
+                <p>Let go of worries about things outside your influence and focus on what you can change.</p>
+            </div>
+            <div class="tip-item">
+                <h4>"I am grateful for this new day"</h4>
+                <p>Start with gratitude for the opportunity to experience life and grow.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="crisisModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🆘 Crisis Support</h2>
+                <button class="close-btn" onclick="closeModal('crisisModal')">&times;</button>
+            </div>
+            <div class="tip-item">
+                <h4>National Suicide Prevention Lifeline</h4>
+                <p><strong>988</strong> - Available 24/7 for free and confidential support for people in distress.</p>
+            </div>
+            <div class="tip-item">
+                <h4>Crisis Text Line</h4>
+                <p><strong>Text HOME to 741741</strong> - Connect with a crisis counselor via text message, 24/7.</p>
+            </div>
+            <div class="tip-item">
+                <h4>SAMHSA National Helpline</h4>
+                <p><strong>1-800-662-4357</strong> - Treatment referral and information service for mental health and
+                    substance abuse.</p>
+            </div>
+            <div class="tip-item">
+                <h4>Veterans Crisis Line</h4>
+                <p><strong>1-800-273-8255 (Press 1)</strong> - Specialized support for veterans and their families.</p>
+            </div>
+            <div class="tip-item">
+                <h4>Emergency Services</h4>
+                <p><strong>911</strong> - For immediate life-threatening emergencies, don't hesitate to call.</p>
+            </div>
+            <div class="tip-item">
+                <h4>Remember</h4>
+                <p>You are not alone. Help is available 24/7. Your life matters, and there are people who care about
+                    you.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(type) {
+            const modals = {
+                'anxiety': 'anxietyModal',
+                'sleep': 'sleepModal',
+                'affirmations': 'affirmationsModal',
+                'crisis': 'crisisModal'
+            };
+
+            const modalId = modals[type];
+            if (modalId) {
+                document.getElementById(modalId).classList.add('show');
+            }
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('show');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function (event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('show');
+            }
+        }
+
+        // Sidebar navigation
+        document.querySelectorAll('.sidebar-item:not(.emergency)').forEach(item => {
+            item.addEventListener('click', function () {
+                const text = this.textContent.trim();
+                if (text !== 'RESOURCES') {
+                    console.log('Navigating to: ' + text);
+                    alert('Navigating to ' + text + ' page...');
+                }
+            });
+        });
+
+        // Input area functionality
+        const sendIcon = document.querySelector('.send-icon');
+        const inputField = document.querySelector('.input-field');
+
+        sendIcon.addEventListener('click', function () {
+            if (inputField.value.trim()) {
+                alert('Message sent: ' + inputField.value);
+                inputField.value = '';
+            }
+        });
+
+        inputField.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter' && inputField.value.trim()) {
+                alert('Message sent: ' + inputField.value);
+                inputField.value = '';
+            }
+        });
+
+        // Login button
+        document.querySelector('.login-btn').addEventListener('click', function () {
+            alert('Redirecting to login page...');
+        });
+
+        // Profile button
+        document.querySelector('.profile-btn').addEventListener('click', function () {
+            alert('Opening profile...');
+        });
+        function goChat() {
+            window.location.href = "index.html";
+        }
+
+        function goJournal() {
+            window.location.href = "journal.html";
+        }
+
+        function goSettings() {
+            window.location.href = "account.html";
+        }
+
+        function goLogin() {
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+
+</html>

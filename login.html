@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindBloom - Auth</title>
+
+    <link rel="stylesheet" href="CSS/login.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <div class="header">
+            <div>
+                <h1>MindBloom</h1>
+                <p>- Your Mental Wellness Companion</p>
+            </div>
+
+            <div class="auth-buttons">
+                <button id="signupTabBtn" class="tab-btn active-signup">SIGN UP</button>
+                <button id="loginTabBtn" class="tab-btn inactive-login">LOG IN</button>
+            </div>
+        </div>
+
+        <div class="tabs-header">Serena</div>
+
+        <div class="forms-container">
+
+            <!-- SIGNUP -->
+            <div class="form-section" id="signupSection">
+
+                <h2>Sign Up</h2>
+
+                <form id="signupForm">
+                    <input id="fullName" placeholder="Full Name" required>
+                    <select id="gender" required>
+                        <option value="">Select Gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
+
+                    <input id="age" type="number" placeholder="Age" required>
+                    <input id="email" type="email" placeholder="Email" required>
+                    <input id="contact" placeholder="Contact" required>
+                    <input id="password" type="password" placeholder="Password" required>
+                    <input id="confirmPassword" type="password" placeholder="Confirm Password" required>
+
+                    <button class="submit-btn signup">CREATE ACCOUNT</button>
+                </form>
+
+            </div>
+
+            <!-- LOGIN -->
+            <div class="form-section hidden" id="loginSection">
+
+                <h2>Login</h2>
+
+                <form id="loginForm">
+                    <input id="loginContact" placeholder="Contact" required>
+                    <input id="loginPassword" type="password" placeholder="Password" required>
+
+                    <button class="submit-btn login">LOGIN</button>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ASK POPUP -->
+    <div class="popup hidden" id="askPopup">
+        <div class="popup-box">
+            <h3>Add Emergency Contacts?</h3>
+            <button onclick="openEmergency()">YES</button>
+            <button class="secondary" onclick="skipEmergency()">SKIP</button>
+        </div>
+    </div>
+
+    <!-- EMERGENCY POPUP -->
+    <div class="popup hidden" id="emergencyPopup">
+        <div class="popup-box">
+            <h3>Emergency Contacts</h3>
+
+            <div id="contactsArea"></div>
+
+            <button onclick="addContact()">+ Add Contact</button>
+            <button onclick="saveEmergency()">SAVE</button>
+        </div>
+    </div>
+
+    <script src="JS/login.js"></script>
+</body>
+
+</html>

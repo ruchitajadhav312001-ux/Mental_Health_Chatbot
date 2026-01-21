@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Personal Diary</title>
+    <link rel="stylesheet" href="CSS/journal.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <header>
+            <h1>Your Personal Diary</h1>
+            <!-- <button onclick="goHome()">HOME</button> -->
+        </header>
+
+        <!-- MAIN LAYOUT -->
+        <div class="main-content">
+
+            <!-- LEFT CONTENT -->
+            <div class="diary-section">
+
+                <!-- DATE -->
+                <div class="date-bar">
+                    <input type="date" id="datePicker">
+                    <div id="showDate"></div>
+                    <div id="showDay"></div>
+                </div>
+
+                <!-- ENTRY -->
+                <input class="title" id="title" placeholder="Title your entry...">
+
+                <div class="moods">
+                    <span onclick="setMood('😊')">😊</span>
+                    <span onclick="setMood('😐')">😐</span>
+                    <span onclick="setMood('😔')">😔</span>
+                    <span onclick="setMood('😡')">😡</span>
+                </div>
+
+                <textarea id="content" placeholder="Write your thoughts..."></textarea>
+
+                <div class="btns">
+                    <button class="save" onclick="saveEntry()">SAVE</button>
+                    <button class="discard" onclick="clearForm()">DISCARD</button>
+                </div>
+
+                <!-- CARDS -->
+                <div class="cards" id="cards"></div>
+
+            </div>
+
+            <!-- SIDEBAR -->
+            <div class="sidebar">
+                <div class="side-item" onclick="goChat()">💬 CHAT</div>
+                <div class="side-item">📚 RESOURCES</div>
+                <div class="side-item">📓 JOURNAL</div>
+                <div class="side-item">⚙ SETTINGS</div>
+                <div class="side-item emergency">🚨 EMERGENCY</div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="JS/journal.js"></script>
+</body>
+
+</html>

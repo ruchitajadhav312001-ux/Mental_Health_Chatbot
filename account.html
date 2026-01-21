@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Settings - MindBloom</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+    <style>
+        /* 🔒 UI NOT TOUCHED */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: Segoe UI;
+            background: linear-gradient(135deg, #c9d6e8, #b8c8d8);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center
+        }
+
+        .container {
+            background: white;
+            width: 100%;
+            max-width: 1000px;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, .15)
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px
+        }
+
+        .title {
+            font-size: 32px
+        }
+
+        .main-content {
+            display: flex;
+            gap: 30px
+        }
+
+        .settings-section {
+            flex: 1
+        }
+
+        .form-input,
+        .form-select {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            margin-bottom: 15px
+        }
+
+        .save-btn {
+            background: #8fabdb;
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            border-radius: 20px;
+            cursor: pointer
+        }
+
+        .sidebar {
+            width: 220px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px
+        }
+
+        .sidebar-item {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 12px;
+            cursor: pointer
+        }
+
+        .sidebar-item.emergency {
+            background: #ff7b7b;
+            color: white
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <h1 class="title">Account Settings</h1>
+        </div>
+
+        <div class="main-content">
+
+            <!-- PROFILE -->
+            <div class="settings-section">
+                <h2>Profile Information</h2>
+
+                <form id="profileForm">
+
+                    <input id="fullName" class="form-input" placeholder="Full Name">
+                    <input id="email" class="form-input" placeholder="Email">
+                    <input id="age" class="form-input" placeholder="Age">
+                    <input id="phone" class="form-input" placeholder="Phone">
+
+                    <select id="gender" class="form-select">
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+
+                    <button class="save-btn">Save Changes</button>
+
+                </form>
+            </div>
+
+            <!-- SIDEBAR -->
+            <div class="sidebar">
+                <div class="sidebar-item" onclick="goChat()">💬 CHAT</div>
+                <div class="sidebar-item">⚙ SETTINGS</div>
+                <div class="sidebar-item" onclick="goJournal()">📓 JOURNAL</div>
+                <div class="sidebar-item" onclick="goResources()">📚 RESOURCES</div>
+                <div class="sidebar-item emergency">🚨 EMERGENCY</div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        /* SUPABASE */
+        const supabaseClient = supabase.createClient(
+            "https://iywprvavelmmxyxpdyea.supabase.co",
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml5d3BydmF2ZWxtbXh5eHBkeWVhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg3NTA5MDQsImV4cCI6MjA4NDMyNjkwNH0.aiPk46MVyHC4VOMjk_f9zIsyMPKu6hTVJmhJpYBqAKU"
+        );
+
+        /* LOAD PROFILE */
+        async function loadProfile() {
+
+            let userId = sessionStorage.getItem("userId");
+
+            if (!userId) {
+                alert("Login first");
+                window.location.href = "login.html";
+                return;
+            }
+
+            userId = parseInt(userId); // 🔥 FIX
+
+            const { data, error } = await supabaseClient
+                .from("users")
+                .select("*")
+                .eq("id", userId)
+                .single();
+
+            if (error) {
+                console.log(error);
+                alert("Cannot fetch data");
+                return;
+            }
+
+            fullName.value = data.name;
+            email.value = data.email;
+            age.value = data.age;
+            phone.value = data.contact;
+            gender.value = data.gender;
+        }
+
+        loadProfile();
+
+        /* UPDATE */
+        document.getElementById("profileForm")
+            .addEventListener("submit", async e => {
+
+                e.preventDefault();
+
+                let userId = parseInt(sessionStorage.getItem("userId"));
+
+                const payload = {
+                    name: fullName.value,
+                    email: email.value,
+                    age: age.value,
+                    contact: phone.value,
+                    gender: gender.value
+                };
+
+                const { error } = await supabaseClient
+                    .from("users")
+                    .update(payload)
+                    .eq("id", userId);
+
+                if (error) {
+                    alert(error.message);
+                    return;
+                }
+
+                alert("Profile updated!");
+            });
+
+        /* NAV */
+        function goChat() { window.location.href = "index.html" }
+        function goJournal() { window.location.href = "journal.html" }
+        function goResources() { window.location.href = "resources.html" }
+
+    </script>
+
+</body>
+
+</html>

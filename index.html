@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindBloom - Your Mental Wellness Companion</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .input-area {
+            position: relative;
+        }
+
+        .mic-inside {
+            position: absolute;
+            left: 18px;
+            width: 22px;
+            color: #999;
+            cursor: pointer;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .input-field {
+            padding-left: 45px;
+        }
+
+        /* Emergency style */
+        .emergency {
+            background: #ff6b6b !important;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <div class="header">
+
+            <div class="logo-section">
+                <div class="logo">
+                    <svg viewBox="0 0 100 100" fill="none">
+                        <path d="M50 20C50 20 35 25 35 40" stroke="#7ec5d8" stroke-width="3" />
+                        <path d="M50 20C50 20 65 25 65 40" stroke="#7ec5d8" stroke-width="3" />
+                        <circle cx="50" cy="45" r="8" fill="#a8c9d8" />
+                    </svg>
+                </div>
+
+                <div class="brand-text">
+                    <h1>MindBloom</h1>
+                    <p>- Your Mental Wellness Companion</p>
+                </div>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:15px;">
+
+                <div class="auth-buttons">
+                    <button class="btn btn-login" onclick="goToLogin()">LOG IN</button>
+                </div>
+
+                <div class="account-section" style="margin:0;">
+                    <div class="account-avatar" onclick="goToAccount()">
+
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- MAIN -->
+        <div class="main-content">
+
+            <!-- CHAT -->
+            <div class="chat-area">
+
+                <div class="assistant-name">Serena</div>
+
+                <div class="avatar">
+                    <div class="avatar-circle">
+                        <div class="avatar-face">
+                            <div class="avatar-hair"></div>
+                            <div class="eye left"></div>
+                            <div class="eye right"></div>
+                            <div class="mouth"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="message-bubble">
+                    Hello! I'm Serena. How are you feeling today?
+                </div>
+
+            </div>
+
+            <!-- SIDEBAR -->
+            <div class="sidebar">
+
+                <div class="menu-item">
+                    <div class="menu-icon">💬</div>
+                    <span>CHAT</span>
+                </div>
+
+                <div class="menu-item" id="resource-btn">
+                    <div class="menu-icon">📚</div>
+                    <span>RESOURCES</span>
+                </div>
+
+                <!-- JOURNAL -->
+                <div class="menu-item" id="journalBtn">
+                    <div class="menu-icon">📓</div>
+                    <span>JOURNAL</span>
+                </div>
+
+                <div class="menu-item" id="settingsBtn">
+                    <div class="menu-icon">⚙</div>
+                    <span>SETTINGS</span>
+                </div>
+
+                <!-- EMERGENCY -->
+                <div class="menu-item emergency" onclick="emergencyHelp()">
+                    <div class="menu-icon">🚨</div>
+                    <span>EMERGENCY</span>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- INPUT -->
+        <div class="input-area">
+
+            <svg class="mic-inside" onclick="startMic()" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2">
+                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+            </svg>
+
+            <input type="text" class="input-field" placeholder="Type your message...">
+
+            <svg class="send-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+
+        </div>
+
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+        function goToLogin() {
+            window.location.href = "login.html";
+        }
+        document.getElementById("resource-btn")
+            .addEventListener("click", function () {
+                window.location.href = "resources.html";
+            });
+
+        /* JOURNAL CLICK */
+        document.getElementById("journalBtn")
+            .addEventListener("click", function () {
+                window.location.href = "journal.html";
+
+            });
+
+        /* MIC */
+        function startMic() {
+            alert("Voice input clicked");
+        }
+
+        /* 🚨 EMERGENCY */
+        async function emergencyHelp() {
+
+            const userId = sessionStorage.getItem("userId");
+
+            const res = await fetch("http://127.0.0.1:5000/get_contacts", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ user_id: userId })
+            });
+
+            const data = await res.json();
+
+            data.forEach(c => {
+                window.open(`tel:${c.phone}`);
+                window.open(`sms:${c.phone}?body=EMERGENCY! Please help me.`);
+            });
+        }
+        /* SETTINGS PAGE */
+        document.getElementById("settingsBtn")
+            .addEventListener("click", function () {
+                window.location.href = "setting.html";
+            });
+
+        /* ACCOUNT PAGE */
+        function goToAccount() {
+            window.location.href = "account.html";
+        }
+
+    </script>
+
+    <script src="JS/script.js"></script>
+
+</body>
+
+</html>
